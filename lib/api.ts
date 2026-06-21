@@ -1,6 +1,5 @@
 import axios from 'axios';
-import type { Note } from '../types/note';
-import type { FormValues } from '../components/NoteForm/NoteForm';
+import type { Note, UserDraft } from '../types/note';
 axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
 
 const myKey = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
@@ -33,7 +32,7 @@ export async function fetchNotes(
   return data;
 }
 
-export async function createNote(values: FormValues): Promise<Note> {
+export async function createNote(values: UserDraft): Promise<Note> {
   const { data } = await axios.post<Note>('/notes', values);
   return data;
 }
